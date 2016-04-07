@@ -1,0 +1,35 @@
+<h1>Placeholder</h1><a href="javascript:test();">Test wkwebview</a><br /><a href="javascript:doJSI();">JS Interface</a>
+
+<script>
+    function test(){
+if (window.webkit && window.webkit.messageHandlers){
+alert("IS wkWebView");
+}else{
+alert("not WK");
+}
+
+}
+function doEvent(){
+    var event = new Event('zeGenie');
+    window.dispatchEvent(event);
+}
+
+// android js interface
+// call from js:
+// android
+// AppInterface.send(data);
+//
+// ios
+// window.url="AppInterface://"+data;
+
+function doJSI(){
+    var data="Data from JS";
+    if (typeof AppInterface != "undefined"){
+        AppInterface.send(data);
+        
+    }else{
+        window.location.href="AppInterface://"+data;
+        
+    }
+}
+</script>
