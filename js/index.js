@@ -31,7 +31,8 @@ receivedEvent: function(id) {
 
 
 app.initialize();
-
+var x=navigator.userAgent;
+var is_iOS=x.match(/(ios)|(iphone)|(ipod)|(ipad)/ig);
 
 var br=new Array();
 function addw(){
@@ -47,16 +48,17 @@ function addw(){
     var option = document.createElement("option");
     option.text = c;
     s.add(option);
-    //log(br,"addw1");
+    
     //alert("addw1");
     //self.webviews[0] = inAppBrowserXwalk.open(0,'about:blank','left=0,top=0,width=320,height=280');
     //br[c*1] = cordova.inAppBrowserXwalk.open(c*1,encodeURI('empty.html'), 'left=0,top=0,width=320,height=280',{loadstop:ldstop});
     //br[c]=cordova.inAppBrowserXwalk.addEventListener('loadstop', ldstop);
-    //log(br,"addw2");
     br[c*1] = inAppBrowserXwalk.open(c*1,encodeURI('empty.html'), 'left=0,top=0,width=320,height=280');
-    br[c*1].show();
-    //alert("added win");
-    //log(br,"addw3");
+	br[c*1].load(encodeURI('empty.html'));
+	br[c*1].show();
+	
+	//alert("added win");
+   
     br[c*1].setPosition(c*1,(c*50),(c*50));
     if (c>0){
         s.selectedIndex=s.selectedIndex+1;
@@ -102,10 +104,14 @@ function arrange(){
     x=0;
     y=0;
     n=s.options.length;
-    /*var w1= window.window.innerWidth * window.devicePixelRatio;
-     var h1 = window.window.innerHeight * window.devicePixelRatio;*/
-    var w1= window.window.innerWidth ;
-    var h1 = window.window.innerHeight ;
+	if (is_iOS){
+		
+		var w1= window.window.innerWidth ;
+		var h1 = window.window.innerHeight ;
+	}else{
+		var w1= window.window.innerWidth * window.devicePixelRatio;
+		var h1 = window.window.innerHeight * window.devicePixelRatio;
+	}
     w=Math.round(w1/n);
     console.log(w);
     log(w,"arrange w=");
@@ -113,18 +119,25 @@ function arrange(){
     //if (w>640) w=640;
     if (w<320) w=Math.round(w1/3)-1;
     log(w,"arrange - w ");
-    //h=Math.round((window.innerHeight* window.devicePixelRatio-$("tool").offsetHeight* window.devicePixelRatio)/2)-10;
-    h=Math.round((window.innerHeight-$("tool").offsetHeight)/2)-10;
+	if (is_iOS){
+		h=Math.round((window.innerHeight-$("tool").offsetHeight)/2)-10;
+	}else{
+		h=Math.round((window.innerHeight* window.devicePixelRatio-$("tool").offsetHeight* window.devicePixelRatio)/2)-10;
+	}
     //alert("h:"+h+" w:"+w+" window/2:"+Math.round(window.innerHeight* window.devicePixelRatio/2)+" tool: "+$("tool").offsetHeight* window.devicePixelRatio);
-    if (h>640) h=640;
+    //if (h>640) h=640;
     //if (h<320) h=320;
     //alert("h:"+h+" w:"+w+" window/2:"+Math.round(window.innerHeight* window.devicePixelRatio/2)+" tool: "+$("tool").offsetHeight* window.devicePixelRatio);
     for(var i=0;i<s.options.length;i++){
         br[i].setPosition(x,y);
         br[i].setSize(w,h);
         x=x+w;
-        //if (x+w > window.innerWidth * window.devicePixelRatio){		x=0;y=y+h+50 * devicePixelRatio;		}
-        if (x+w > window.innerWidth ){		x=0;y=y+h+5;		}
+		if (is_iOS){
+			if (x+w > window.innerWidth ){		x=0;y=y+h+5;		}	
+        
+		}else{
+			if (x+w > window.innerWidth * window.devicePixelRatio){		x=0;y=y+h+50 * devicePixelRatio;		}
+		}
     }
 }
 
