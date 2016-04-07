@@ -9,7 +9,7 @@ cordova create testapp com.zegenie.plugin.InAppBrowserXwalk
 
 git clone https://github.com/janpekarguru/app3
 
-copy fileas and overwrite from app3/www to testapp/www
+copy and overwrite files from app3/www to testapp/www
 
 cd testapp
 ```
@@ -18,9 +18,9 @@ cd testapp
 ```sh 
 cordova platform add android
 cordova platform add ios
+cordova plugin add https://github.com/apache/cordova-plugin-wkwebview-engine
 cordova plugin add https://github.com/janpekarguru/cordova-plugin-inappbrowser
 cordova plugin add https://github.com/crosswalk-project/cordova-plugin-crosswalk-webview
-cordova plugin add https://github.com/apache/cordova-plugin-wkwebview-engine
 cordova buid android
 cordova build ios
 ```
