@@ -6,10 +6,9 @@ for cordova
 ### install
 ```sh 
 cordova create app3 com.zegenie.plugin.InAppBrowserXwalk
-cd app3
-cd www
+
 git clone https://github.com/janpekarguru/app3
-cd ..
+cd app3
 ```
 
 
