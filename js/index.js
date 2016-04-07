@@ -54,6 +54,7 @@ function addw(){
     //br[c]=cordova.inAppBrowserXwalk.addEventListener('loadstop', ldstop);
     //log(br,"addw2");
     br[c*1] = inAppBrowserXwalk.open(c*1,encodeURI('empty.html'), 'left=0,top=0,width=320,height=280');
+    br[c*1].show();
     //alert("added win");
     //log(br,"addw3");
     br[c*1].setPosition(c*1,(c*50),(c*50));
