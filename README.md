@@ -32,7 +32,7 @@ Plugin developed for [ZeGenie Inc] [ze].
 ### Install
     cordova plugin add https://github.com/janpekarguru/cordova-plugin-inappbrowser
 ### Remove
-    cordova plugin remove cordova-plugin-inappbrowser
+    cordova plugin remove com.zegenie.cordova.plugin.inappbrowserxwalk
 
 
 Add to config.xml for getScreenshot to work on android:
