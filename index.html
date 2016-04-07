@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        
+		<meta http-equiv="Content-Security-Policy" content="default-src * ;img-src * data:; style-src * 'unsafe-inline'; media-src *;  script-src * 'unsafe-inline' 'unsafe-eval'">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <title>App1</title>
+    </head>
+    <body>
+		<div id=tool>
+        <form id=mainform>
+			<div>Window:<select id=main_sel></select>
+			<a href="javascript:removew();" class="hrf2">DEL</a> <a href="javascript:addw();" class="hrf2">ADD</a>
+			<select id="minmenu" onchange="opentab()">
+                <option> Home</option><option>inj JS</option><option>inj CSS</option>
+                <option>Screenshot</option><option>Log</option><option>Tests</option>
+            </select>
+			</div>
+			<hr>
+			<div>
+				
+			</div>
+			<div id=maintab>
+				<div>
+				<!--Url:<input type=text id=url><br />-->
+				Url:<select id=url><option>zegenie.com</option><option>madnet.rs</option><option>b92.net</option><option>blic.rs</option><option>kurir.rs</option><option>cnn.com</option><option>cnbc.com</option><option>usatoday.com</option><option>facebook.com</option><option>google.com</option><option>webkam.com</option><option>yahoo.com</option></select><br />
+				</div>
+				
+				<div>
+				W:<input type="text" id="w">
+				H:<input type="text" id="h">
+				x:<input type="text" id="x">
+				y:<input type="text" id="y"></div>
+				
+				<div>
+				
+				<a href="javascript:set();" class="hrf2">Go</a>
+				<a href="javascript:arrange();" class="hrf2">Align</a>
+				<a href="javascript:gobck();" class="hrf2">Back</a>
+				
+			
+				
+				</div>
+			</div>
+		</form>
+		<div id=tab1 class=tab>
+            <textarea name='ta1' id='ta1'>document.body.style.backgroundColor = '#FFFF44';alert(document.head.innerHTML);</textarea>
+			<a href="javascript:injectJS1();" class="hrf2">Inject JS</a>
+			<a href="javascript:injectJSFile();" class="hrf2">JS File</a>
+			
+			<a href="javascript:backMain();" class="hrf2">Back</a>
+		</div>
+		<div id=tab2 class=tab>
+            <textarea name='ta2' id='ta2'>body{background-color:#0000FF;background:#0000ff;}</textarea>
+			<a href="javascript:injectCSS();" class="hrf2">Inject Css</a>
+			<a href="javascript:injectCSSFile();" class="hrf2">Css File</a>
+			
+			<a href="javascript:backMain();" class="hrf2">Back</a>
+		</div>
+		<div id=tab3 class=tab>
+			<img id='img1' >
+			
+	
+			<a href="javascript:scrShootImage();" class="hrf4" style="bottom:40px">Scr. shot</a>
+			<a href="javascript:backMain();" class="hrf4">Back</a>
+		</div>
+		<div id=tab4 class=tab>
+			<textarea id='tlog'></textarea>
+			<a href="javascript:clearlog();" class="hrf2" style="margin-bottom:20px">Clear</a>
+			
+			<a href="javascript:backMain();" class="hrf2">Back</a>
+			
+		</div>
+        <div id=tab5 class=tab>
+            <a href="javascript:hideall();" class="hrf2" style="margin-bottom:20px">Hide All</a>
+            <a href="javascript:showall();" class="hrf2" style="margin-bottom:20px">Show All</a>
+            <a href="javascript:arrange();" class="hrf2">Align</a>
+            <a href="javascript:hashist();" class="hrf2">Hist?</a>
+            <a href="javascript:checkWK();" id="hrf3">WKwebview?</a>
+            <a href="javascript:alert(window.location.href);" class="hrf2">PWD</a>
+            
+            <a href="javascript:backMain();" class="hrf2">Back</a>
+            
+        </div>
+		</div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
