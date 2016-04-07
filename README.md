@@ -5,10 +5,13 @@ for cordova
 
 ### install
 ```sh 
-cordova create app3 com.zegenie.plugin.InAppBrowserXwalk
+cordova create testapp com.zegenie.plugin.InAppBrowserXwalk
 
 git clone https://github.com/janpekarguru/app3
-cd app3
+
+copy fileas and overwrite from app3/www to testapp/www
+
+cd testapp
 ```
 
 
