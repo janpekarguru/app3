@@ -24,7 +24,7 @@ receivedEvent: function(id) {
     
     inAppBrowserXwalk.addEventListener('onScreenshot', onScr);
     log("addedListener","");
-    
+    android_keyboard();
 }
 };
 
@@ -53,10 +53,11 @@ function addw(){
     //self.webviews[0] = inAppBrowserXwalk.open(0,'about:blank','left=0,top=0,width=320,height=280');
     //br[c*1] = cordova.inAppBrowserXwalk.open(c*1,encodeURI('empty.html'), 'left=0,top=0,width=320,height=280',{loadstop:ldstop});
     //br[c]=cordova.inAppBrowserXwalk.addEventListener('loadstop', ldstop);
-    br[c*1] = inAppBrowserXwalk.open(c*1,encodeURI('empty.html'), 'left=0,top=0,width=320,height=280');
-	br[c*1].load(encodeURI('empty.html'));
-	br[c*1].show();
-	
+	var path=document.location+"";
+    path=path.replace("index.html","empty.html");
+    br[c*1] = inAppBrowserXwalk.open(c*1,path, 'left=0,top=0,width=320,height=280');
+	//br[c*1].show();
+	//br[c*1].load(path);
 	//alert("added win");
    
     br[c*1].setPosition(c*1,(c*50),(c*50));
@@ -136,7 +137,7 @@ function arrange(){
 			if (x+w > window.innerWidth ){		x=0;y=y+h+5;		}	
         
 		}else{
-			if (x+w > window.innerWidth * window.devicePixelRatio){		x=0;y=y+h+50 * devicePixelRatio;		}
+			if (x+w > window.innerWidth * window.devicePixelRatio){		x=0;y=y+h+5* devicePixelRatio;		}
 		}
     }
 }
@@ -305,4 +306,21 @@ function hideall(){
 function showall(){
     s=$("main_sel");	n=s.options.length;	if (n==0) return;	sv=s.options[s.selectedIndex].value*1;
     for(i=0;i<n;i++)br[i].show();
+}
+
+function android_keyboard(){
+	if (!is_iOS){
+		// select all input type text
+		// select all textarea elements
+		var ta = document.getElementsByTagName('textarea');
+		for (var i=0;i<ta.length;i++){
+			ta[i].onfocus= function(){hideall();};
+			ta[i].onblur= function(){showall();};
+		}
+		var ta = document.getElementsByTagName('input');
+		for (var i=0;i<ta.length;i++){
+			ta[i].onfocus= function(){hideall();};
+			ta[i].onblur= function(){showall();};
+		}
+	}
 }
